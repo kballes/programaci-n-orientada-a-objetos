@@ -1,0 +1,86 @@
+public class Person (
+public static void main(String[] args) {
+System.out.println("Hello World");
+}
+private String name; // private restricted access
+// Getter
+public String getName() {
+return name;
+}
+// Setter
+public void setName(newName) (
+this.name = newName;
+}
+
+---------------------------------------------------------------
+
+Usuario.java
+
+public class Usuario {
+private String username;
+private String password;
+// Constructor opcional
+public Usuario() {
+}
+// Getter y Setter de username (con validación de máximo 10 caracteres)
+public String getUsername() {
+return username;
+}
+public void setUsername(String username) {
+if (username.length() <= 10) {
+this.username username;
+} else {
+System.out.println("Error: El username no puede superar los 10 caracteres.");
+}
+}
+// Setter de password (NO hay getter bor seguridad)
+public void setPassword(String password) {
+if (password.length() == 5) {
+this.password = password;
+} else {
+System.out.println("Error: La contraseña no puede tener menos o mas de 5 caracteres.");
+}
+}
+// Método para verificar contraseña
+public boolean verificarPassword(String intento) {
+return this.password != null && this.password.equals(intento);
+}
+}
+
+Main.java
+
+public class Main {
+
+    public static void main(String[] args) {
+        // 1. Crear una nueva instancia de Usuario
+        System.out.println("--- 1. Creando Objeto Usuario ---");
+        Usuario miUsuario = new Usuario();
+
+        // 2. Intentar asignar un username VÁLIDO (máx. 10 caracteres)
+        System.out.println("\n--- 2. Probando setUsername (Válido) ---");
+        miUsuario.setUsername("A_Perez");
+        System.out.println("Username asignado: " + miUsuario.getUsername()); // Salida: A_Perez
+
+        // 3. Intentar asignar un username INVÁLIDO (más de 10 caracteres)
+        System.out.println("\n--- 3. Probando setUsername (Inválido) ---");
+        miUsuario.setUsername("UsuarioMuyLargoParaSerAceptado"); 
+        // Salida: Error: El username no puede superar los 10 caracteres.
+
+        // 4. Verificar que el username NO cambió (sigue siendo A_Perez)
+        System.out.println("Username después del intento fallido: " + miUsuario.getUsername()); // Salida: A_Perez
+
+        // 5. Intentar asignar un password VÁLIDO (exactamente 5 caracteres)
+        System.out.println("\n--- 5. Probando setPassword (Válido) ---");
+        miUsuario.setPassword("12345");
+
+        // 6. Intentar asignar un password INVÁLIDO (menos o más de 5 caracteres)
+        System.out.println("\n--- 6. Probando setPassword (Inválido) ---");
+        miUsuario.setPassword("corta");
+        // Salida: Error: La contraseña no puede tener menos o mas de 5 caracteres.
+        miUsuario.setPassword("demasiadolarga");
+        // Salida: Error: La contraseña no puede tener menos o mas de 5 caracteres.
+
+
+      
+
+    
